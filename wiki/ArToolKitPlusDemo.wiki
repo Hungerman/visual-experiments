@@ -1,4 +1,7 @@
-#summary ArToolKitPlusDemo README
+#summary ArToolKitPlusDemo Presentation
+
+
+<wiki:video url="http://www.youtube.com/watch?v=ItGVExbFByU"/>
 
 = Instructions : =
 
@@ -9,8 +12,7 @@
  * Display the printed Marker using your webcam
 
 = Troubleshooting : =
-If you can't see the webcam video (centered white rectangle), 
-well I don't known why it's not working...
+If you can't see the webcam video (white rectangle),  well I don't known why it's not working...
  * Check if you have a recent video driver
  * Check iy you have a webcam connected that can handle 640x480 @ 30fps
  * Check if you have a decent 3D card (Nvidia or AMD)
