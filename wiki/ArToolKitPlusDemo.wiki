@@ -5,9 +5,9 @@
 
 = Instructions : =
 
- * Print PrintMe.pdf
+ * Print {{{PrintMe.pdf}}}
  * Plug a webcam
- * Launch bin/ArToolKitPlusDemo.exe
+ * Launch {{{bin/ArToolKitPlusDemo.exe}}}
  * DirectX & OpenGL mode should work
  * Display the printed Marker using your webcam
 
