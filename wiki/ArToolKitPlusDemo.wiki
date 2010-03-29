@@ -2,9 +2,9 @@
 
 = Instructions : =
 
- * Print "PrintMe.pdf"
+ * Print 'PrintMe.pdf'
  * Plug a webcam
- * Launch "bin/ArToolKitPlusDemo.exe"
+ * Launch 'bin/ArToolKitPlusDemo.exe'
  * DirectX & OpenGL mode should work
  * Display the printed Marker using your webcam
 
@@ -16,7 +16,6 @@ well I don't known why it's not working...
  * Check if you have a decent 3D card (Nvidia or AMD)
 
 = Credits : =
- * 3D Sinbad model created by omniter
-(http://www.ogre3d.org/2010/01/19/we-have-an-official-mascot)
+ * 3D Sinbad model created by omniter [http://www.ogre3d.org/2010/01/19/we-have-an-official-mascot license]
 
-Created by Henri ASTRE : (http://www.visual-experiments.com)
+Created by Henri ASTRE : [http://www.visual-experiments.com http://www.visual-experiments.com]
