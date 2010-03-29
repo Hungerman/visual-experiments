@@ -19,5 +19,3 @@ If you can't see the webcam video (white rectangle),  well I don't known why it'
 
 = Credits : =
  * 3D Sinbad model created by omniter [http://www.ogre3d.org/2010/01/19/we-have-an-official-mascot license]
-
-Created by Henri ASTRE : [http://www.visual-experiments.com http://www.visual-experiments.com]
