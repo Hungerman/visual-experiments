@@ -4,9 +4,65 @@
 
 Small lib for Ogre3D to register/unregister map/unmap Ogre::Texture
 
+= Utilization =
 
-= Details =
 
-  *  `Ogre::D3D9RenderSystem` supported
-  *  `Ogre::D3D10RenderSystem` supported (but performance drop by 50%)
-  *  `Ogre::GLRenderSystem` unsupported
+== simple example with one texture to map ==
+{{{
+Ogre::Cuda::Root* mCudaRoot = Ogre::Cuda::Root::createRoot(renderWindow, renderSystem);
+mCudaRoot->init();
+
+Ogre::Cuda::Texture* mCudaTex = mCudaRoot->getTextureManager()->createTexture(tex);
+
+//init
+mCudaTex->registerForCudaUse();
+
+//on each Cuda update
+mCudaTex->map();
+Ogre::Cuda::TextureDeviceHandle textureHandle = mCudaTex->getDeviceHandle(0, 0);
+cudaFunction(textureHandle->getPointer());
+mCudaTex->update(textureHandle); //reflect changes to the Ogre::Texture
+mCudaTex->unmap();
+
+//shutdown
+mCudaTex->unregister();
+mCudaRoot->shutdown();
+}}}
+
+== efficient way to map multiples cudaRessource (texture, vertex buffer) in one call ==
+
+{{{
+std::vector<Ogre::TexturePtr> textures;
+std::vector<Ogre::Cuda::CudaRessource*> ressources;
+Ogre::Cuda::Root* mCudaRoot = Ogre::Cuda::Root::createRoot(renderWindow, renderSystem);
+mCudaRoot->init();
+
+for (unsigned int i=0; i<textures.size(); ++i)
+	ressources.push_back(mCudaRoot->getTextureManager()->createTexture(textures[i]);
+
+//init
+for (unsigned int i=0; i<ressources.size(); ++i)
+	ressources[i]->registerForCudaUse();
+
+//on each Cuda update
+mCudaRoot->map(ressources); //efficient way to map multiple ressources in one call	
+for (unsigned int i=0; i<ressources.size(); ++i)
+{
+	if (ressources[i]->getType() == Ogre::Cuda::TEXTURE_RESSOURCE)
+	{
+		Ogre::Cuda::TextureDeviceHandle textureHandle = static_cast<Ogre::Cuda::Texture*>(ressources[i])->getDeviceHandle(0, 0);
+		cudaTextureFunction(textureHandle->getPointer());
+		ressources[i]->update(textureHandle); //reflect changes to Ogre ressource
+	}
+	else
+		cudaVertexBufferFunction(static_cast<Ogre::Cuda::VertexBuffer*>(ressources[i])->getPointer());
+
+	
+}	
+mCudaRoot->unmap(ressources);
+
+//shutdown
+for (unsigned int i=0; i<ressources.size(); ++i)
+	ressources[i]->unregister();
+mCudaRoot->shutdown();
+}}}
