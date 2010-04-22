@@ -9,10 +9,11 @@ Small lib for Ogre3D to register/unregister map/unmap Ogre::Texture
 
 == simple example with one texture to map ==
 {{{
+Ogre::TexturePtr texture;
 Ogre::Cuda::Root* mCudaRoot = Ogre::Cuda::Root::createRoot(renderWindow, renderSystem);
 mCudaRoot->init();
 
-Ogre::Cuda::Texture* mCudaTex = mCudaRoot->getTextureManager()->createTexture(tex);
+Ogre::Cuda::Texture* mCudaTex = mCudaRoot->getTextureManager()->createTexture(texture);
 
 //init
 mCudaTex->registerForCudaUse();
