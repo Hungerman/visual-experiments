@@ -1,10 +1,11 @@
-#summary Ogre::Cuda : Small lib for Ogre3D to register/unregister map/unmap Ogre::Texture for Cuda
-
 = Introduction =
 
-Small lib for Ogre3D to register/unregister map/unmap Ogre::Texture
+The purpose of this libray is to abstract DirectX & OpenGL interop with Cuda. 
+It’s means that you can use Ogre::Texture and `Ogre::HardwareVertexBuffer` with Cuda without having to bother which `Ogre::RenderSystem` is active (DX9, DX10 or GL).
 
-= Utilization =
+<wiki:video url="http://www.youtube.com/watch?v=0KkB38CB3vY"/>
+
+= Utilisation =
 
 
 == simple example with one texture to map ==
